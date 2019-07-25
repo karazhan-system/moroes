@@ -1,21 +1,15 @@
 const Koa = require('koa')
-
 const KoaLogger = require('koa-logger')
-const KoaBodyparser = require('koa-bodyparser')
-const KoaStatic = require('koa-static')
-
+const KoaBodyParser = require('koa-bodyparser')
+const KoaCors = require('@koa/cors')
 const api = require('./api')
-const Oss = require('./middleware/mid.oss')
-const Download = require('./middleware/mid.download')
 
 const app = new Koa()
 
+app.use(KoaCors())
 app.use(KoaLogger())
-app.use(KoaBodyparser())
-app.use(KoaStatic(__dirname + '/static'))
-app.use(Oss())
-app.use(Download())
+app.use(KoaBodyParser())
 app.use(api.routes())
 app.use(api.allowedMethods())
 
-app.listen(3000)
+app.listen(3333)
