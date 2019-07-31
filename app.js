@@ -14,4 +14,4 @@ app.use(KoaBodyParser())
 app.use(api.routes())
 app.use(api.allowedMethods())
 
-app.listen(12306)
+app.listen(33331)
